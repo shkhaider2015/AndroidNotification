@@ -105,9 +105,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        if(mAuth != null)
+        {
+            startProfileActivity();
+        }
+    }
 
     @Override
-    public void onClick(View v) {
+    public void onClick(View v)
+    {
+        switch (v.getId())
+        {
+            case R.id.signin:
+                loadInformation();
+                break;
+        }
 
     }
 
@@ -136,34 +152,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         }
 
-        mAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(new OnCompleteListener<AuthResult>()
-                {
+        mAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
-                    public void onComplete(@NonNull Task<AuthResult> task)
-                    {
+                    public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful())
                         {
                             startProfileActivity();
-
                         }
                         else
                         {
-                            if(task.getException() instanceof FirebaseAuthUserCollisionException)
-                            {
-                                Toast.makeText(MainActivity.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
-
-                            }
-                            else
-                            {
-                                Toast.makeText(MainActivity.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
-
-                            }
+                            Toast.makeText(MainActivity.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
                         }
-
                     }
                 });
-
 
     }
 
