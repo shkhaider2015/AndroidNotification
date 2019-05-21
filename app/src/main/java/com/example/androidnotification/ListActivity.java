@@ -1,5 +1,6 @@
 package com.example.androidnotification;
 
+import android.content.Intent;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -92,6 +93,11 @@ public class ListActivity extends AppCompatActivity implements AdapterView.OnIte
         Users usersClick = (Users) parent.getItemAtPosition(position);
         String email = usersClick.email;
         Toast.makeText(ListActivity.this, email, Toast.LENGTH_SHORT).show();
+
+
+        Intent intent = new Intent(ListActivity.this, SingleUserInterface.class);
+        intent.putExtra("object", usersClick);
+        ListActivity.this.startActivity(intent);
 
     }
 }

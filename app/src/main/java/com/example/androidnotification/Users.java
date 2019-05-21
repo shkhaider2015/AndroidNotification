@@ -1,6 +1,8 @@
 package com.example.androidnotification;
 
-public class Users {
+import java.io.Serializable;
+
+public class Users implements Serializable {
 
     public String email;
     public String token;

@@ -23,7 +23,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/bbf"/>
+        app:layout_constraintStart_toEndOf="@+id/bbf"
+        android:layout_marginTop="20dp"/>
 
     <EditText
         android:id="@+id/title"
@@ -32,7 +33,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bbf"
         android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"/>
+        android:layout_marginEnd="20dp"
+        android:hint="Enter Title"/>
     <EditText
         android:id="@+id/body"
         android:layout_width="match_parent"
@@ -40,9 +42,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title"
         android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"/>
+        android:layout_marginEnd="20dp"
+        android:hint="Enter Body"/>
 
     <Button
+        android:id="@+id/single_user_send"
         android:text="Send"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
