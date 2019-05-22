@@ -11,6 +11,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 public class SingleUserInterface extends AppCompatActivity {
 
     private EditText title, body;
@@ -54,6 +57,11 @@ public class SingleUserInterface extends AppCompatActivity {
             body.requestFocus();
             return;
         }
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://joke")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
 
 
     }
