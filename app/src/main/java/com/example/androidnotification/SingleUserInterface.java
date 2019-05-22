@@ -11,6 +11,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -59,9 +63,27 @@ public class SingleUserInterface extends AppCompatActivity {
         }
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://joke")
+                .baseUrl("https://www.bbcurdu.com")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
+
+        Api api = retrofit.create(Api.class);
+
+       Call<ResponseBody> call = api.sendNotification(users.token, Title, Body);
+
+       call.enqueue(new Callback<ResponseBody>() {
+           @Override
+           public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response)
+           {
+               Toast.makeText(getApplicationContext(), "Response is : " + response, Toast.LENGTH_SHORT).show();
+
+           }
+
+           @Override
+           public void onFailure(Call<ResponseBody> call, Throwable t) {
+
+           }
+       });
 
 
     }
