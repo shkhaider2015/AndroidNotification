@@ -75,12 +75,14 @@ public class SingleUserInterface extends AppCompatActivity {
            @Override
            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response)
            {
-               Toast.makeText(getApplicationContext(), "Response is : " + response, Toast.LENGTH_SHORT).show();
+               Toast.makeText(getApplicationContext(), "Response is : " + response.body(), Toast.LENGTH_SHORT).show();
 
            }
 
            @Override
-           public void onFailure(Call<ResponseBody> call, Throwable t) {
+           public void onFailure(Call<ResponseBody> call, Throwable t)
+           {
+               Toast.makeText(getApplicationContext(), "Error is " + t.getMessage(), Toast.LENGTH_SHORT).show();
 
            }
        });
