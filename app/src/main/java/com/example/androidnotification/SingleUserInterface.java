@@ -63,7 +63,7 @@ public class SingleUserInterface extends AppCompatActivity {
         }
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://www.bbcurdu.com")
+                .baseUrl("https://us-central1-androidnotification-3210e.cloudfunctions.net/api/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
